@@ -4,11 +4,14 @@ sudo setup-apkrepos -cf
 echo "Updating system..."
 sudo apk update && sudo apt upgrade
 
+echo "Installing utils: neofetch, redshift..."
+sudo apk add neofetch redshift
+
 echo "Installing xorg..."
 sudo setup-xorg-base
 
 echo "Installing dependencies..."
-sudo apk add git make gcc g++ libx11-dev libxft-dev libxinerama-dev ncurses dbus-x11 chromium
+sudo apk add git make gcc g++ libx11-dev libxft-dev libxinerama-dev ncurses dbus-x11 chromium font-noto-emoji
 
 echo "Installing suckless software by git..."
 cd /tmp
@@ -29,5 +32,5 @@ git clone https://git.suckless.org/st
 cd st
 echo "Installing st terminal..."
 sudo make clean install
-cd ~
+mv .profile .xinitrc ~/
 
