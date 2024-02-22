@@ -1,20 +1,21 @@
-echo "Activate root superuser access:.."
-su
+repopath=$(pwd)
+echo $repopath
 
 echo "Setting comunity repo, and searching fast repos..."
-setup-apkrepos -cf
+#setup-apkrepos -cf
 
-echo "Updating system..."
-apk update && sudo apt upgrade
+echo "Updating system..." 
+sudo apk update
+sudo apk upgrade
 
 echo "Installing utils: neofetch, redshift..."
-apk add neofetch redshift
+sudo apk add neofetch redshift
 
 echo "Installing xorg..."
-setup-xorg-base
+sudo setup-xorg-base
 
 echo "Installing dependencies..."
-apk add git make gcc g++ libx11-dev libxft-dev libxinerama-dev ncurses dbus-x11 chromium font-noto-emoji
+sudo apk add git make gcc g++ libx11-dev libxft-dev libxinerama-dev ncurses dbus-x11 chromium font-noto-emoji
 
 echo "Installing suckless software by git..."
 cd /tmp
@@ -22,22 +23,22 @@ echo "Clonning dwm git repo..."
 git clone https://git.suckless.org/dwm
 cd dwm
 echo "Installing dwm..."
-make clean install
-cd ..
-echo "Clonning dmenu git repo..."
+sudo make clean install
+cd .. 
+echo "Clonning dmenu git repo..." 
 git clone https://git.suckless.org/dmenu
-cd dmenu
-echo "Installing dmenu..."
-make clean install
-cd ..
-echo "Clonning st terminal git repo..."
+cd dmenu 
+echo "Installing dmenu..." 
+sudo make clean install 
+cd .. 
+echo "Clonning st terminal git repo..." 
 git clone https://git.suckless.org/st
-cd st
-echo "Installing st terminal..."
-make clean install
+cd st 
+echo "Installing st terminal..." 
+sudo make clean install 
 
-echo "Exiting from root user..."
-exit
-echo "Setting xorg and start init dwm basic config files..."
-mv .profile .xinitrc ~/
-
+echo "Enter your username:.."
+read usrname
+echo "Setting xorg and start init dwm basic config files..." 
+cd $repopath
+cp -r ./.profile ./.xinitrc /home/$usrname
