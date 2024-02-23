@@ -44,4 +44,5 @@ cd $repopath
 cp -r ./.profile ./.xinitrc /home/$usrname
 
 echo "Adding user to groups..."
-adduser $usrname wheel input
+sudo adduser $usrname wheel
+sudo adduser $usrname input
