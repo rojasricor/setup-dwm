@@ -9,13 +9,15 @@ sudo apk update
 sudo apk upgrade
 
 echo "Installing utils: neofetch, redshift..."
-sudo apk add neofetch redshift
+sudo apk add neofetch redshift setxkbmap
 
 echo "Installing xorg..."
 sudo setup-xorg-base
 
 echo "Installing dependencies..."
 sudo apk add git make gcc g++ libx11-dev libxft-dev libxinerama-dev ncurses dbus-x11 chromium font-noto-emoji
+# Ferdev27 dwm dotfiles dependencies
+sudo apk add libxrandr-dev imlib2-dev linux-headers
 
 echo "Installing suckless software by git..."
 cd /tmp
