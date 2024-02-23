@@ -42,3 +42,6 @@ read usrname
 echo "Setting xorg and start init dwm basic config files..." 
 cd $repopath
 cp -r ./.profile ./.xinitrc /home/$usrname
+
+echo "Adding user to groups..."
+adduser $usrname wheel input
